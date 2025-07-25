@@ -1,0 +1,85 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zunaid Invoice</title>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#e0e0e0"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <div class="pin-bdt-icon" onclick="showOldBdtModal()">
+      <img src="pin-icon.png" alt="Pin Old BDT" />
+    </div>
+    <div class="advance-bdt-icon" onclick="showAdvanceBdtModal()">
+      <img src="advance-icon.png" alt="Joma BDT" />
+    </div>
+    <h1>Zunaid Invoice</h1>
+    <div class="settings-icon" onclick="showSettingsModal()">
+      <img src="settings-icon.png" alt="Settings"/>
+    </div>
+    <div class="history-icon" onclick="toggleHistory()">
+      <img src="history-icon.png" alt="History" />
+    </div>
+    <div class="date-container">
+      <label for="invoiceDate">Invoice Date (Optional):</label>
+      <input type="date" id="invoiceDate" name="invoiceDate">
+    </div>
+    <div id="entries"></div>
+    <div style="text-align: center; margin-top: 10px;">
+      <button onclick="addEntry()" class="btn">Add Entry</button>
+    </div>
+    <div class="total-section" id="totalBDT">
+      <img src="https://cdn-icons-png.flaticon.com/512/1170/1170627.png" /> Total TK: 0
+    </div>
+    <div class="total-section" id="totalBDTSub">
+      <img src="https://cdn-icons-png.flaticon.com/512/9377/9377574.png" />  Subtotal BDT: 0
+    </div>
+    <div class="breakdown-section" id="oldBdtDisplay" style="display:none;">
+      Old BDT Balance: +<span id="oldBdtValueText">0.00</span>
+    </div>
+    <div class="breakdown-section" id="advanceBdtDisplay" style="display:none;">
+      Joma BDT: -<span id="advanceBdtValueText">0.00</span>
+    </div>
+    <div class="total-section grand-total" id="grandTotalBdtDisplay" style="display:none;">
+        <strong><span id="grandTotalBdtLabel">Due BDT:</span> <span id="grandTotalBdtValue">0.00</span></strong>
+    </div>
+    <div class="buttons">
+      <button class="btn" onclick="generateInvoice()">Download</button>
+      <button class="btn" id="install-button" style="display: none; margin-top: 10px;">Install App</button>
+    </div>
+    <div id="receipt-container" style="position: fixed; top: -9999px; left: -9999px;">
+        <div id="receipt"></div>
+    </div>
+    <div id="oldBdtModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Set Old BDT</h2>
+        <input type="number" id="oldBdtInput" placeholder="Enter Old BDT value" step="0.01">
+        <button id="saveOldBdtBtn" class="btn">Save</button>
+      </div>
+    </div>
+    <div id="advanceBdtModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Set Joma BDT</h2>
+        <input type="number" id="advanceBdtInput" placeholder="Enter Joma BDT value" step="0.01">
+        <button id="saveAdvanceBdtBtn" class="btn">Save</button>
+      </div>
+    </div>
+    <div id="settingsModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Settings</h2>
+        <label for="businessNameInput">Business Name:</label>
+        <input type="text" id="businessNameInput" placeholder="Enter Business Name">
+        <button id="saveSettingsBtn" class="btn">Save</button>
+      </div>
+    </div>
+    <div class="history" id="history"></div>
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
